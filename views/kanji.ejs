@@ -1,0 +1,57 @@
+<%- include('partials/header'); -%>
+
+      <section>
+        <h1>Search Form</h1>
+
+        <form action="/kanji" method="get">
+          <div class="row">
+            <div class="col">
+              <input type="text" name="literal" class="form-control form-control-lg" placeholder="Literal">
+            </div>
+            <div class="col">
+              <input type="text" name="reading" class="form-control form-control-lg" placeholder="Reading">
+            </div>
+            <div class="col">
+              <input type="text" name="meaning" class="form-control form-control-lg" placeholder="Meaning">
+            </div>
+            <div class="col">
+              <input type="text" name="strokes" class="form-control form-control-lg" placeholder="Stroke Count">
+            </div>
+          </div>
+          <div class="row">
+            <button type="submit" class="btn btn-info btn-block mt-4">Show Data</button>
+          </div>
+        </form>
+      </section>
+      
+      <section>
+        <h3>Search Results</h3>
+
+        <div class="table-responsive-md">
+          <table class="table table-bordered table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Literal</th>
+                <th scope="col">Reading(s)</th>
+                <th scope="col">Meaning(s)</th>
+                <th scope="col">Stroke Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% kanjis.forEach((kanji) => { %>            
+              <tr>
+                <td><%= kanji.literal %></td>
+                <td><%= kanji.reading %></td>
+                <td><%= kanji.meaning %></td>
+                <td><%= kanji.strokes %></td>
+              </tr>   
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Number of matches found = </p>
+
+      </section>
+
+<%- include('partials/footer'); -%>

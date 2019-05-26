@@ -1,0 +1,19 @@
+{
+  "name": "koohii_jachar",
+  "version": "1.0.0",
+  "description": "Displays information for a large set of Japanese characters",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "John Oggerino",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.17.0",
+    "mongoose": "^5.5.11"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}

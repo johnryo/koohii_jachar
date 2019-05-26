@@ -1,0 +1,12 @@
+# Dependency directories
+node_modules/
+
+#Data storage directory
+data/
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
+.env.test
