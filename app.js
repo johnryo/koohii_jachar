@@ -5,9 +5,12 @@ const ejs = require('ejs');
 const app = express();
 const port = process.env.PORT || 8888;
 
+// DB Config
+const db = require('./config/keys').MongoURI;
+
 // Connect to Local MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/jachar', { useNewUrlParser: true })
-.then(() => console.log('Local MongoDB is connected.'))
+mongoose.connect(db, { useNewUrlParser: true })
+.then(() => console.log('MongoDB is connected.'))
 .catch(err => console.log(err));
 
 // EJS
@@ -24,5 +27,6 @@ app.use('/', require('./routes/index'));
 
 // Expose variables to ejs templates
 app.locals.kanjis = [];
+app.locals.kanas = [];
 
 app.listen(port, () => console.log(`Server is up on port ${port}.`));

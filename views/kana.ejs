@@ -1,5 +1,32 @@
 <%- include('partials/header'); -%>
 
-      <h1>Kana Main</h1>
+      <h1>Kana</h1>
+
+      <div class="table-responsive-md">
+          <table class="kana table table-bordered table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">あ</th>
+                <th scope="col">い</th>
+                <th scope="col">う</th>
+                <th scope="col">え</th>
+                <th scope="col">お</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <% kanas.forEach((kana) => { %>
+                <td>
+                  <%= kana.hiragana %><br>
+                  <%= kana.katakana %><br>
+                  <%= kana.roman %>
+                </td>
+                <% }); %>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
 
 <%- include('partials/footer'); -%>

@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Kanji = require('../models/Kanji');
+const Kana = require('../models/Kana');
 
-// Routing
+// Routing (endpoints)
 router.get('/', (req, res) => {
   res.render('home', { user: 'John', title: 'Home' });
 });
@@ -25,7 +26,7 @@ router.get('/kanji', (req, res) => {
 
     .then(kanjis => {
       
-      res.render('kanji', { title: 'Kanji Data', kanjis: kanjis });
+      res.render('kanji', { title: 'Kanji', kanjis: kanjis });
 
       // res.json({
       //   confirmation: 'Success!',
@@ -43,7 +44,7 @@ router.get('/kanji', (req, res) => {
     
     .then(kanjis => {
     
-      res.render('kanji', { title: 'Kanji Data', kanjis: kanjis });
+      res.render('kanji', { title: 'Kanji', kanjis: kanjis });
 
     })
     
@@ -60,7 +61,7 @@ router.get('/kanji', (req, res) => {
     
     .then(kanjis => {
 
-      res.render('kanji', { title: 'Kanji Data', kanjis: kanjis });
+      res.render('kanji', { title: 'Kanji', kanjis: kanjis });
 
     })
     
@@ -77,7 +78,7 @@ router.get('/kanji', (req, res) => {
     
     .then(kanjis => {
 
-      res.render('kanji', { title: 'Kanji Data', kanjis: kanjis });
+      res.render('kanji', { title: 'Kanji', kanjis: kanjis });
 
     })
     
@@ -90,15 +91,33 @@ router.get('/kanji', (req, res) => {
 
   } else {
 
-    res.render('kanji', { title: 'Kanji Data' });
+    res.render('kanji', { title: 'Kanji' });
   
   }
 });
 
 router.get('/kana', (req, res) => {
-  res.render('kana', {
-    title: 'Kana Main'
-  });
+
+  Kana.find({})
+
+  .then(kanas => {
+
+    res.send({
+      confirmation: 'Success!',
+      data: kanas
+    });
+    
+    // res.render('kana', { title: 'Kana', kanas: kanas });
+
+  })
+
+  .catch(err => {
+    res.send({
+      confirmation: 'Failure!',
+      message: err.message
+    })
+  })
+
 });
 
 module.exports = router;

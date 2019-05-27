@@ -28,7 +28,7 @@
         <h3>Search Results</h3>
 
         <div class="table-responsive-md">
-          <table class="table table-bordered table-striped table-dark">
+          <table class="kanji table table-bordered table-striped table-dark">
             <thead>
               <tr>
                 <th scope="col">Literal</th>
@@ -38,19 +38,17 @@
               </tr>
             </thead>
             <tbody>
-              <% kanjis.forEach((kanji) => { %>            
+              <% kanjis.forEach((kanji) => { %>
               <tr>
                 <td><%= kanji.literal %></td>
                 <td><%= kanji.reading %></td>
                 <td><%= kanji.meaning %></td>
                 <td><%= kanji.strokes %></td>
-              </tr>   
+              </tr>
               <% }); %>
             </tbody>
           </table>
         </div>
-
-        <p>Number of matches found = </p>
 
       </section>
 
