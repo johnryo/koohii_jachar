@@ -2,25 +2,28 @@
 
       <section>
         <h1>Search Form</h1>
-
+        
         <form action="/kanji" method="get">
           <div class="row">
-            <div class="col">
+            <div class="col-12 col-md-3 mb-2">
               <input type="text" name="literal" class="form-control form-control-lg" placeholder="Literal">
             </div>
-            <div class="col">
+            <div class="col-12 col-md-3 mb-2">
               <input type="text" name="reading" class="form-control form-control-lg" placeholder="Reading">
             </div>
-            <div class="col">
+            <div class="col-12 col-md-3 mb-2">
               <input type="text" name="meaning" class="form-control form-control-lg" placeholder="Meaning">
             </div>
-            <div class="col">
+            <div class="col-12 col-md-3">
               <input type="text" name="strokes" class="form-control form-control-lg" placeholder="Stroke Count">
             </div>
           </div>
           <div class="row">
-            <button type="submit" class="btn btn-info btn-block mt-4">Show Data</button>
+            <div class="col-12">
+              <button type="submit" class="btn btn-info btn-block mt-4">Submit</button>
+            </div>
           </div>
+          <p id="userQuery" class="lead">Your query: <span><%= userQuery %></span></p>
         </form>
       </section>
       

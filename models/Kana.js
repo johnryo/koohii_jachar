@@ -1,28 +1,12 @@
 const mongoose = require('mongoose');
 
 const KanaSchema = new mongoose.Schema({
-  hiragana: {
-    type: String,
-    trim: true
-  },
-
-  katakana: {
-    type: String,
-    trim: true
-  },
-
-  roman: {
-    type: String,
-    trim: true
-  },
-
-  hg_utf16: {
-    type: String
-  },
-
-  kk_utf16: {
-    type: String
-  }
+  id: { type: Number },
+  hiragana: { type: String },
+  katakana: { type: String },
+  roman: { type: String },
+  hg_utf16: { type: String },
+  kk_utf16: { type: String }
 });
 
 const Kana = mongoose.model('Kana', KanaSchema);

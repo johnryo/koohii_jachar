@@ -7,12 +7,5 @@ data/
 # MongoDB keys
 keys.js
 
-# Optional eslint cache
-.eslintcache
-
-# dotenv environment variables file
-.env
-.env.test
-
 # Extra
 kana.txt
