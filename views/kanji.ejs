@@ -6,16 +6,32 @@
         <form action="/kanji" method="get">
           <div class="row">
             <div class="col-12 col-md-3 mb-2">
-              <input type="text" name="literal" class="form-control form-control-lg" placeholder="Literal">
+              <div class="form-group">
+                <label for="literal" class="lead">Literal</label>
+                <input type="text" name="literal" id="literal" class="form-control" placeholder="Single Kanji">  
+                <small class="small-text text-muted">If match, returns a single result.</small>
+              </div>
             </div>
             <div class="col-12 col-md-3 mb-2">
-              <input type="text" name="reading" class="form-control form-control-lg" placeholder="Reading">
+              <div class="form-group">
+                <label for="reading" class="lead">Reading</label>
+                <input type="text" name="reading" id="reading" class="form-control" placeholder="Kana">
+                <small class="small-text text-muted">Use a dot (".") before okurigana.</small>
+              </div>
             </div>
             <div class="col-12 col-md-3 mb-2">
-              <input type="text" name="meaning" class="form-control form-control-lg" placeholder="Meaning">
+              <div class="form-group">
+                <label for="meaning" class="lead">Meaning</label>
+                <input type="text" name="meaning" id="meaning" class="form-control" placeholder="English Text">  
+                <small class="small-text text-muted">Single word works best.</small>
+              </div>
             </div>
             <div class="col-12 col-md-3">
-              <input type="text" name="strokes" class="form-control form-control-lg" placeholder="Stroke Count">
+              <div class="form-group">
+                <label for="strokes" class="lead">Stroke Count</label>
+                <input type="text" name="strokes" id="strokes" class="form-control" placeholder="Number">  
+                <small class="small-text text-muted">Joyo kanji max is 29, none in 24-28 range.</small>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -23,13 +39,21 @@
               <button type="submit" class="btn btn-info btn-block mt-4">Submit</button>
             </div>
           </div>
-          <p id="userQuery" class="lead">Your query: <span><%= userQuery %></span></p>
+          
         </form>
       </section>
       
       <section>
-        <h3>Search Results</h3>
 
+        <h3>Search Results</h3>
+        <p id="userQuery" class="lead">
+        <% if (kanjis.length !== 0) { %>
+          Your query: <span><%= userQuery %></span>
+        <% } else { %>
+          <span>No match for your query</span>
+        <% } %>
+        </p>
+        
         <div class="table-responsive-md">
           <table class="kanji table table-bordered table-striped table-dark">
             <thead>
@@ -52,7 +76,6 @@
             </tbody>
           </table>
         </div>
-
       </section>
 
 <%- include('partials/footer'); -%>

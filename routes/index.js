@@ -21,12 +21,13 @@ router.get('/kanji', (req, res) => {
   const q = req.query;
 
   if (q.literal) {
-
     Kanji.find({ literal: { $eq: q.literal } })
     .then(kanjis => {
-
-      res.render('kanji', { title: 'Kanji', userQuery: q.literal, kanjis: kanjis });
-
+      res.render('kanji', {
+        title: 'Kanji',
+        userQuery: q.literal,
+        kanjis: kanjis
+      });
       // res.json({
       //   confirmation: 'Success!',
       //   data: kanjis
@@ -35,76 +36,62 @@ router.get('/kanji', (req, res) => {
     .catch(err => {
       res.send({ confirmation: 'Failure!', message: err.message });
     });
-
   } else if (q.reading) {
-
     Kanji.find({ reading: { $regex: q.reading } }).sort({ strokes: 1 })
     .then(kanjis => {
-    
-      res.render('kanji', { title: 'Kanji', userQuery: q.reading, kanjis: kanjis });
-
+      res.render('kanji', {
+        title: 'Kanji',
+        userQuery: q.reading,
+        kanjis: kanjis
+      });
     })
     .catch(err => {
-      res.send({
-        confirmation: 'Failure!',
-        message: err.message
-      });
+      res.send({ confirmation: 'Failure!', message: err.message });
     });
-
   } else if (q.meaning) {
-
     Kanji.find({ meaning: { $regex: q.meaning } }).sort({ strokes: 1 })
     .then(kanjis => {
-
-      res.render('kanji', { title: 'Kanji', userQuery: q.meaning, kanjis: kanjis });
-
+      res.render('kanji', {
+        title: 'Kanji',
+        userQuery: q.meaning,
+        kanjis: kanjis
+      });
     })
     .catch(err => {
-      res.send({
-        confirmation: 'Failure!',
-        message: err.message
-      });
+      res.send({ confirmation: 'Failure!', message: err.message });
     });
-
   } else if (q.strokes) {
-
     Kanji.find({ strokes: { $eq: q.strokes } }).sort({ id: 1 })
     .then(kanjis => {
-
-      res.render('kanji', { title: 'Kanji', userQuery: q.strokes, kanjis: kanjis });
-
+      res.render('kanji', {
+        title: 'Kanji',
+        userQuery: q.strokes,
+        kanjis: kanjis
+      });
     })
     .catch(err => {
-      res.send({
-        confirmation: 'Failure!',
-        message: err.message
-      });
+      res.send({ confirmation: 'Failure!', message: err.message });
     });
-
   } else {
-
     res.render('kanji', { title: 'Kanji' });
-  
   }
 });
 
 router.get('/kana', (req, res) => {
   Kana.find().sort({ id: 1 })
   .then(kanas => {
+    res.render('kana', {
+      title: 'Kana',
+      kanas: kanas
+    });
     // res.send({
     //   confirmation: 'Success!',
     //   data: kanas
     // });
-
-    res.render('kana', { title: 'Kana', kanas: kanas });
-
   })
   .catch(err => {
-    res.send({
-      confirmation: 'Failure!',
-      message: err.message
-    })
-  })
+    res.send({ confirmation: 'Failure!', message: err.message });
+  });
 });
 
 module.exports = router;

@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const ejs = require('ejs');
 
 const app = express();
 const port = process.env.PORT || 8888;
@@ -28,6 +27,7 @@ app.use('/', require('./routes/index'));
 // Enable variables in ejs templates
 app.locals.kanjis = [];
 app.locals.kanas = [];
+app.locals.req = [];
 app.locals.userQuery = [];
 
 app.listen(port, () => console.log(`Server is up on port ${port}.`));
